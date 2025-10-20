@@ -1,0 +1,17 @@
+# Environment files
+.env
+.env.*
+
+TODO.md
+# Node modules
+node_modules/
+
+# Build outputs
+dist/
+build/
+
+# Logs and OS files
+*.log
+.DS_Store
+Thumbs.db
+

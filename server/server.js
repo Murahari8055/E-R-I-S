@@ -14,7 +14,7 @@ if (process.env.NODE_ENV !== "production") {
 const app = express();
 app.use(express.json());
 app.use(cors({
-  origin: ["https://erisai.netlify.app/", "http://localhost:3000", "http://localhost:5173"],
+  origin: ["https://erisai.netlify.app", "http://localhost:3000", "http://localhost:5173"],
   methods: ["GET", "POST", "DELETE"],
   credentials: true,
 }));

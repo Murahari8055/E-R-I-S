@@ -91,9 +91,74 @@ export default function VoiceAssistantView() {
 
     let response = "";
 
-    // Basic greetings
+    // Greetings
     if (message.includes("hey") || message.includes("hello")) {
-      response = "Hello Sir, How may I help you?";
+      const greetings = [
+        "Hello Sir, How may I help you?",
+        "Hi there! What can I do for you today?",
+        "Greetings! How can I assist you?",
+        "Hey! Ready to help. What's up?"
+      ];
+      response = greetings[Math.floor(Math.random() * greetings.length)];
+      speak(response);
+    } else if (message.includes("good morning")) {
+      response = "Good morning! Hope you have a fantastic day ahead.";
+      speak(response);
+    } else if (message.includes("good evening")) {
+      response = "Good evening! How was your day?";
+      speak(response);
+    } else if (message.includes("good night")) {
+      response = "Good night! Sleep well and sweet dreams.";
+      speak(response);
+    } else if (message.includes("hi there") || message.includes("hi")) {
+      response = "Hi! Nice to hear from you. What’s on your mind?";
+      speak(response);
+    } else if (message.includes("hey buddy") || message.includes("hey friend")) {
+      response = "Hey buddy! Let's get things done together.";
+      speak(response);
+    }
+    // Conversational responses
+    else if (message.includes("how are you")) {
+      const replies = [
+        "I'm doing great, thank you! How about you?",
+        "I'm fantastic! Always ready to assist.",
+        "I'm well, thanks for asking. What's new with you?"
+      ];
+      response = replies[Math.floor(Math.random() * replies.length)];
+      speak(response);
+    } else if (message.includes("thank you") || message.includes("thanks")) {
+      const thanksReplies = [
+        "You're welcome! Happy to help.",
+        "No problem at all! Anything else?",
+        "My pleasure! Let me know if you need more assistance."
+      ];
+      response = thanksReplies[Math.floor(Math.random() * thanksReplies.length)];
+      speak(response);
+    } else if (message.includes("goodbye") || message.includes("bye")) {
+      response = "Goodbye! Have a wonderful day.";
+      speak(response);
+    } else if (message.includes("tell me a joke")) {
+      const jokes = [
+        "Why don't scientists trust atoms? Because they make up everything!",
+        "What do you call fake spaghetti? An impasta!",
+        "Why did the scarecrow win an award? Because he was outstanding in his field!"
+      ];
+      response = jokes[Math.floor(Math.random() * jokes.length)];
+      speak(response);
+    } else if (message.includes("what's your name") || message.includes("who are you")) {
+      response = "I'm ERIS, your virtual assistant. Nice to meet you!";
+      speak(response);
+    } else if (message.includes("how's the weather")) {
+      response = "I'm not connected to weather services right now, but you can check your local weather app!";
+      speak(response);
+    } else if (message.includes("sing a song")) {
+      response = "I'm not much of a singer, but I can hum a tune! La la la...";
+      speak(response);
+    } else if (message.includes("i love you")) {
+      response = "Aww, that's sweet! I appreciate you too.";
+      speak(response);
+    } else if (message.includes("what can you do")) {
+      response = "I can help with greetings, opening websites, telling time, searching the web, and much more. Just ask!";
       speak(response);
     }
     // Open websites

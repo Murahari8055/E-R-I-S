@@ -6,12 +6,12 @@ import ModeSwitchBubble from "./components/ModeSwitchBubble";
 
 export default function App() {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-  const [mode, setMode] = useState("chatbot"); // mobile mode
-  const [activeSide, setActiveSide] = useState(null); // null = initial 50/50
+  const [mode, setMode] = useState("chatbot"); 
+  const [activeSide, setActiveSide] = useState(null); 
   const [user, setUser] = useState(() => JSON.parse(localStorage.getItem("user")));
   const hasWished = useRef(false);
 
-  // Speech Synthesis functions
+
   const speak = (text) => {
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.rate = 1;

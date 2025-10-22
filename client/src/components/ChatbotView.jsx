@@ -187,12 +187,12 @@ export default function ChatbotView() {
         <p>I am your ChatBot, How may I help you?</p>
 
         <div className="input1">
-          <i className="fas fa-keyboard"></i>
+          {window.innerWidth > 768 && <i className="fas fa-keyboard"></i>}
           <input
             value={userInput}
             onChange={(e) => setUserInput(e.target.value)}
             onKeyDown={(e) => { if (e.key === 'Enter') processQuestion(); }}
-            placeholder="Ask your question..."
+            placeholder={window.innerWidth <= 768 ? "Ask me . . " : "Ask your question..."}
           />
           <button className="askButton" id="askButton" onClick={processQuestion}><i className='fas fa-arrow-circle-right'></i></button>
         </div>

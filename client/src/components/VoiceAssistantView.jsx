@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 
 export default function VoiceAssistantView() {
   const [listening, setListening] = useState(false);
-  const [content, setContent] = useState("Click here to speak");
+  const [content, setContent] = useState(window.innerWidth <= 768 ? " Speak " : "Click here to speak");
   const [chats, setChats] = useState([]);
   const [user, setUser] = useState(() => JSON.parse(localStorage.getItem("user")));
   const hasInitialized = useRef(false);

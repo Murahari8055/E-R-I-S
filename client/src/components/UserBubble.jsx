@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export default function UserBubble({ setUser }) {
   const [showForm, setShowForm] = useState(false);
@@ -6,6 +6,7 @@ export default function UserBubble({ setUser }) {
   const [formData, setFormData] = useState({ name: "", email: "", password: "" });
   const [user, setUserLocal] = useState(() => JSON.parse(localStorage.getItem("user")));
   const [chats, setChats] = useState([]);
+  const popupRef = useRef(null);
 
   const toggleForm = () => setShowForm(!showForm);
 
@@ -83,11 +84,19 @@ export default function UserBubble({ setUser }) {
       if (user) fetchChats();
     };
 
+    const handleClickOutside = (event) => {
+      if (popupRef.current && !popupRef.current.contains(event.target) && !event.target.closest('#userBubble')) {
+        setShowForm(false);
+      }
+    };
+
     window.addEventListener("storage", handleStorageChange);
     window.addEventListener("chatSaved", handleChatSaved);
+    document.addEventListener("mousedown", handleClickOutside);
     return () => {
       window.removeEventListener("storage", handleStorageChange);
       window.removeEventListener("chatSaved", handleChatSaved);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [user]);
 
@@ -105,7 +114,7 @@ export default function UserBubble({ setUser }) {
       </div>
 
       {showForm && (
-        <div className="auth-popup">
+        <div className="auth-popup" ref={popupRef}>
           {user ? (
             <div className="user-info">
               <h3>Welcome, {user.name}</h3>

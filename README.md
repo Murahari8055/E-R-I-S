@@ -1,4 +1,5 @@
 # Eris AI
+Website Link: https://erisai.netlify.app/
 
 A MERN stack AI assistant with chatbot and voice assistant modes. Users can interact via text or voice, with authentication and chat history.
 
